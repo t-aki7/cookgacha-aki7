@@ -8,10 +8,14 @@
         
         <div class="collapse navbar-collapse" id="nav-bar">
             <ul class="navbar-nav mr-auto"></ul>
-            <form class="form-inline">
-                <input class="form-control mr-1" type="text" name=""/>
-                <button class="btn btn-primary mr-2" type="submit">検索</button>
-            </form>
+            
+            {!! Form::open(['route' => 'cooks.search']) !!}
+                <div style="display:inline-flex" class="mr-3">
+                    {{ Form::text('keyword', old('keyword'), ['class' => 'form-control mr-2']) }}
+                    {!! Form::submit('検索', ['class' => 'btn btn-primary d-block mx-auto']) !!}
+                </div>
+            {!! Form::close() !!}
+            
             <ul class="navbar-nav">
                 @if (Auth::check())
                     <li>{!! link_to_route('cooks.create', '登録', [], ['class' => 'nav-link']) !!}</li>

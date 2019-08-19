@@ -26,4 +26,4 @@ Route::get('logout', 'Auth\LoginController@logout')->name('logout.get');
 
 //
 Route::resource('cooks', 'CooksController');
-Route::get('cooks', 'CooksController@search')->name('cooks.search');
+Route::post('search', 'CooksController@search')->name('cooks.search');

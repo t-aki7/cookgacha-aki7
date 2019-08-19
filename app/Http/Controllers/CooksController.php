@@ -117,16 +117,25 @@ class CooksController extends Controller
         //
     }
     
-    public function search()
+    public function search(Request $request)
     {
-        /*$user = \Auth::user();
-        $cooks = $user->cooks()->orderBy('created_at', 'desc')->paginate(5);
+        $this->validate($request, [
+            'keyword' => 'required',
+        ]);
         
-        $data = [
-            'user' => $user,
-            'cooks' => $cooks,
-        ];
-        */
-        return view('/');    
+            $user = \Auth::user();
+            //$cooks = $user->cooks()->orderBy('created_at', 'desc')->get();
+            $cooks = Cook::where('ingredient1', $request->keyword)
+                        ->orWhere('ingredient2', $request->keyword)
+                        ->orWhere('method', $request->keyword)
+                        ->inRandomOrder()
+                        ->take(3)
+                        ->get();
+            $data = [
+                'user' => $user,
+                'cooks' => $cooks,
+            ];
+        
+        return view('cooks.search', $data);
     }
 }
