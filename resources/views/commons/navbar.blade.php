@@ -13,9 +13,14 @@
                 <button class="btn btn-primary mr-2" type="submit">検索</button>
             </form>
             <ul class="navbar-nav">
-                <li class="nav-item"><a href="#" class="nav-link">登録</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">ユーザ登録</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">ログイン</a></li>
+                @if (Auth::check())
+                    <li>{!! link_to_route('cooks.create', '登録', [], ['class' => 'nav-link']) !!}</li>
+                    <li>{!! link_to_route('cooks.index', '登録一覧', [], ['class' => 'nav-link']) !!}</a></li>
+                    <li>{!! link_to_route('logout.get', 'ログアウト', [], ['class' => 'nav-link']) !!}</li>
+                @else
+                    <li>{!! link_to_route('signup.get', 'ユーザ登録', [], ['class' => 'nav-link']) !!}</a></li>
+                    <li>{!! link_to_route('login', 'ログイン', [], ['class' => 'nav-link']) !!}</li>
+                @endif
             </ul>
         </div>
     </nav>
