@@ -11,7 +11,7 @@
             
             {!! Form::open(['route' => 'cooks.search']) !!}
                 <div style="display:inline-flex" class="mr-3">
-                    {{ Form::text('keyword', old('keyword'), ['class' => 'form-control mr-2']) }}
+                    {{ Form::text('keyword', old('keyword'), ['class' => 'form-control mr-2', "placeholder"=>"食材を入力"]) }}
                     {!! Form::submit('検索', ['class' => 'btn btn-primary d-block mx-auto']) !!}
                 </div>
             {!! Form::close() !!}
@@ -19,10 +19,10 @@
             <ul class="navbar-nav">
                 @if (Auth::check())
                     <li>{!! link_to_route('cooks.create', '登録', [], ['class' => 'nav-link']) !!}</li>
-                    <li>{!! link_to_route('cooks.index', '登録一覧', [], ['class' => 'nav-link']) !!}</a></li>
+                    <li>{!! link_to_route('cooks.index', '登録一覧', [], ['class' => 'nav-link']) !!}</li>
                     <li>{!! link_to_route('logout.get', 'ログアウト', [], ['class' => 'nav-link']) !!}</li>
                 @else
-                    <li>{!! link_to_route('signup.get', 'ユーザ登録', [], ['class' => 'nav-link']) !!}</a></li>
+                    <li>{!! link_to_route('signup.get', 'ユーザ登録', [], ['class' => 'nav-link']) !!}</li>
                     <li>{!! link_to_route('login', 'ログイン', [], ['class' => 'nav-link']) !!}</li>
                 @endif
             </ul>

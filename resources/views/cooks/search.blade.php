@@ -1,10 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
+    <h2 class="text-center">検索結果</h2>
     <div class="row mt-5">
         <div class="col-sm-6 offset-sm-3">
             @if (count($cooks) > 0)
-                <table class="table table-striped">
+                <table class="table table-striped text-center">
                     <thead>
                         <tr>
                             <th>id</th>
@@ -26,6 +27,15 @@
                         @endforeach
                     </tbody>
                 </table>
+                
+                {!! Form::open(['route' => 'cooks.search']) !!}
+                    {!! Form::hidden('keyword', $keyword) !!}
+                    {!! Form::submit('もう一回', ['class' => 'btn btn-success d-block mx-auto']) !!}
+                {!! Form::close() !!}
+            @else
+                <div class="text-center">
+                    ヒットしませんでした
+                </div>
             @endif     
     </div>
 @endsection

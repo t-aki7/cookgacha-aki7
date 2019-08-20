@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="text-center">ユーザ登録</div>
+    <h2 class="text-center">ユーザ登録</h2>
     
     <div class="row">
         <div class="col-sm-6 offset-sm-3">
