@@ -13,6 +13,11 @@
                             <th>調理方法</th>
                             <th>食材1</th>
                             <th>食材2</th>
+                            @if (Auth::check())
+                                <td>Cook</td>
+                            @endif
+                                <td>Cooked Counter</td>
+                            
                         </tr>
                     </thead>
                     <tbody>
@@ -23,6 +28,14 @@
                             <td>{{ $cook->method }}</td>
                             <td>{{ $cook->ingredient1 }}</td>
                             <td>{{ $cook->ingredient2 }}</td>
+                            @if (Auth::check())
+                                <td>
+                                    @include('cooks.cooked_count_button')
+                                </td>
+                            @endif
+                                <td>
+                                    {!! $ids_count[$cook->id] !!}
+                                </td>
                         </tr>
                         @endforeach
                     </tbody>
@@ -30,12 +43,11 @@
                 
                 {!! Form::open(['route' => 'cooks.search']) !!}
                     {!! Form::hidden('keyword', $keyword) !!}
-                    {!! Form::submit('もう一回', ['class' => 'btn btn-success d-block mx-auto']) !!}
+                    {!! Form::submit('もう一回', ['class' => 'btn btn-success d-block mx-auto btn-lg']) !!}
                 {!! Form::close() !!}
+                
             @else
-                <div class="text-center">
-                    ヒットしませんでした
-                </div>
+                <h4 class="text-center">登録されているデータがありません。</h3>
             @endif     
     </div>
 @endsection

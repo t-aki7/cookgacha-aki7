@@ -22,12 +22,20 @@ class SearchController extends Controller
                         ->get();
             $keyword = $request->keyword;
             
+            $ids_count = [];
+            foreach ($cooks as $cook) {
+                $cook_id = $cook->id;
+                $count_cooked = Cook::find($cook_id)->voted()->count();
+                $ids_count = $ids_count + array($cook_id => $count_cooked);
+            }
+
             $data = [
                 'user' => $user,
                 'cooks' => $cooks,
                 'keyword' => $keyword,
+                'ids_count' => $ids_count,
             ];
-        
+            
         return view('cooks.search', $data);
     }
 }

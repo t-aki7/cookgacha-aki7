@@ -12,4 +12,9 @@ class Cook extends Model
     {
         return $this->belongsTo(User::class);
     }
+    
+    public function voted()
+    {
+        return $this->belongsToMany(User::class, 'cook_vote', 'cook_id', 'user_id');
+    }
 }

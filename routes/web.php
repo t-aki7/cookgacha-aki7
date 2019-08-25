@@ -27,4 +27,14 @@ Route::get('logout', 'Auth\LoginController@logout')->name('logout.get');
 //
 Route::resource('cooks', 'CooksController');
 
+//
 Route::post('search', 'SearchController@search')->name('cooks.search');
+
+
+//vote
+Route::group(['prefix' => 'cooks/{id}'], function() {
+    Route::post('cooking', 'VotesController@cooking')->name('cooking.post');
+    Route::delete('uncooking', 'VotesController@uncooking')->name('uncooking.delete');
+});
+
+Route::get('cooked', 'UsersController@cooked_index')->name('cooked_index');

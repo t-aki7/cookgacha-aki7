@@ -18,10 +18,17 @@ class CooksController extends Controller
         if (\Auth::check()) {
             $user = \Auth::user();
             $cooks = $user->cooks()->orderBy('created_at', 'desc')->paginate(5);
+            $ids_count = [];
+            foreach ($cooks as $cook) {
+                $cook_id = $cook->id;
+                $count_cooked = Cook::find($cook_id)->voted()->count();
+                $ids_count = $ids_count + array($cook_id => $count_cooked);
+            }
             
             $data = [
                 'user' => $user,
                 'cooks' => $cooks,
+                'ids_count' => $ids_count,
             ];
             
             return view('cooks.index', $data);    

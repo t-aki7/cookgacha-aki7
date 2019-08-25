@@ -21,7 +21,7 @@
                     {{ Form::text('keyword', old('keyword'), ['class' => 'form-control', "placeholder"=>"検索したい食材をひらがな、全角カタカナで入力してください"]) }}
                 </div>
             
-            {!! Form::submit('検索', ['class' => 'btn btn-primary d-block mx-auto']) !!}
+            {!! Form::submit('検索', ['class' => 'btn btn-primary d-block mx-auto btn-lg']) !!}
         {!! Form::close() !!}      
         </div>
           
