@@ -17,7 +17,6 @@
                                 <td>Cook</td>
                             @endif
                                 <td>Cooked Counter</td>
-                            
                         </tr>
                     </thead>
                     <tbody>

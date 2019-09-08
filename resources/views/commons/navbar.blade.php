@@ -8,13 +8,15 @@
         
         <div class="collapse navbar-collapse" id="nav-bar">
             <ul class="navbar-nav mr-auto"></ul>
-            
+
+{{--        検索後空、空検索でエラー   
             {!! Form::open(['route' => 'cooks.search']) !!}
                 <div style="display:inline-flex" class="mr-3">
                     {{ Form::text('keyword', old('keyword'), ['class' => 'form-control mr-2', "placeholder"=>"食材を入力"]) }}
                     {!! Form::submit('検索', ['class' => 'btn btn-primary d-block mx-auto']) !!}
                 </div>
             {!! Form::close() !!}
+--}}  
             
             <ul class="navbar-nav">
                 @if (Auth::check())
